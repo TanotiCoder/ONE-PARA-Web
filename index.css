@@ -343,6 +343,7 @@ header.scrolled {
     position: relative;
     width: 50%;
     box-sizing: border-box;
+    margin: 2rem 0; /* Add spacing between items */
 }
 
 .timeline-item:nth-child(odd) {
@@ -362,16 +363,16 @@ header.scrolled {
     border: 4px solid var(--primary);
     border-radius: 50%;
     z-index: 1;
-    top: 50%;
+    top: 50%; /* Center dot vertically */
     transform: translateY(-50%);
 }
 
 .timeline-item:nth-child(odd)::after {
-    right: -10px;
+    right: -14px; /* Adjust dot position */
 }
 
 .timeline-item:nth-child(even)::after {
-    left: -10px;
+    left: -14px; /* Adjust dot position */
 }
 
 .timeline-content {
@@ -380,6 +381,11 @@ header.scrolled {
     position: relative;
     border-radius: 15px;
     box-shadow: var(--card-shadow);
+    /* Ensure content is vertically centered */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
 }
 
 .timeline-title {
@@ -418,8 +424,8 @@ footer {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
+    padding: 12px 24px;
+    border-radius: 50px; /* Makes buttons fully rounded */
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -451,8 +457,8 @@ footer {
 }
 
 .btn-large {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 16px 32px;
+    font-size: 1.2rem;
 }
 
 .btn-outline {
@@ -498,28 +504,48 @@ footer {
 
 @media (max-width: 768px) {
     .timeline::before {
-        left: 40px;
+        left: 31px; /* Adjust the vertical line position */
     }
 
     .timeline-item {
-        width: 100%;
+        width: calc(100% - 60px); /* Adjust width to account for timeline */
         padding-left: 70px;
         padding-right: 25px;
+        margin-left: 30px; /* Add margin to align with timeline */
     }
 
-    .timeline-item:nth-child(even) {
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd) {
         left: 0;
     }
 
     .timeline-item::after {
-        left: 30px;
-        right: auto;
+        left: -14px; /* Adjust dot position */
         top: 50%;
         transform: translateY(-50%);
     }
 
+    .timeline-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
     .hero-title {
         font-size: 2.2rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-large {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+
+    .header-container .btn-outline {
+        display: none;
     }
 }
 
@@ -530,5 +556,34 @@ footer {
 
     .section-title {
         font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .timeline::before {
+        left: 21px; /* Further adjust for smaller screens */
+    }
+
+    .timeline-item {
+        width: calc(100% - 40px);
+        padding-left: 50px;
+        padding-right: 15px;
+        margin-left: 20px;
+    }
+
+    .timeline-item::after {
+        left: -12px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .btn-large {
+        padding: 12px 24px;
+        font-size: 0.9rem;
     }
 }
